@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.system.DeptDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.system.Dept">
+        <id column="dept_id" jdbcType="VARCHAR" property="id"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+        <result column="state" jdbcType="DECIMAL" property="state"/>
+        <!--关联关系-->
+        <association
+                property="parent"
+                column="parent_id"
+                select="com.itheima.dao.system.DeptDao.findById"
+                javaType="com.itheima.domain.system.Dept"/>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        dept_id, dept_name, parent_id, state
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_dept
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_dept
+        where dept_id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from ss_dept  where dept_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="com.itheima.domain.system.Dept">
+        insert into ss_dept (dept_id, dept_name, parent_id,state)
+        values (#{id,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR},#{state,jdbcType=DECIMAL})
+    </insert>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="com.itheima.domain.system.Dept">
+        update ss_dept
+        set dept_name = #{deptName,jdbcType=VARCHAR},
+        parent_id = #{parentId,jdbcType=VARCHAR},
+        state = #{state,jdbcType=DECIMAL}
+        where dept_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

@@ -1,4 +1,4 @@
-package com.itheima.web.controller.company;
+package com.itheima.web.controller.store;
 
 
 import com.github.pagehelper.PageInfo;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 创建一个公共类，使每个方法不需要重新new 一次Company了，看注释了什么
+ * 创建一个公共类，使每个方法不需要重新new 一次Company了，看注释了什么.
  * */
 
 // uri:/store/company?operation=list
