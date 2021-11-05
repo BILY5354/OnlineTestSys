@@ -1,0 +1,28 @@
+三类文件
+1.MyBaits总配置文件
+2.每一个模块对应的映射文件
+3.连接数据库的配置文件
+
+一开始报错是因为没有找到数据库，我的数据库不是在本机，而是在Linux上
+CompanyServlet的page 和 size是找的事哪里？
+
+
+Ctrl + alt + L          格式化代码
+Alt + enter            代码修正提示
+Ctrl + D                向下复制一行
+Ctrl + X                剪切当前行
+Ctrl + /                批量加入单行注释，再按一次就是取消
+Ctrl + shift + /        批量加入多行注释，再按一次就是取消
+Alt + shift + ↑         上移当前行
+Alt + shift + ↓         下移当前行
+
+
+
+psvm + 回车 : 快速生成main方法
+sout + 回车 : 快速生成输出语句
+alt + 1 : 打开 \ 隐藏 工程目录结构
+alt + 4 : 打开 \ 隐藏 控制台
+shift + tab 反缩进
+
+
+视频中的itheima成了learnheima

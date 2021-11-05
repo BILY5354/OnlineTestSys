@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.store.CompanyDao">
+
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.store.Company">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="expiration_date" jdbcType="TIMESTAMP" property="expirationDate"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="license_id" jdbcType="VARCHAR" property="licenseId"/>
+        <result column="representative" jdbcType="VARCHAR" property="representative"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="company_size" jdbcType="VARCHAR" property="companySize"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, name, expiration_date, address, license_id, representative, phone, company_size,
+        industry, remarks, state, city
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_company
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_company
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from st_company where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入-->
+    <insert id="save" parameterType="com.itheima.domain.store.Company">
+        insert into st_company (id, name, expiration_date,
+        address, license_id, representative,
+        phone, company_size, industry,
+        remarks, state,
+        city)
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{expirationDate,jdbcType=TIMESTAMP},
+        #{address,jdbcType=VARCHAR}, #{licenseId,jdbcType=VARCHAR}, #{representative,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{companySize,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR},
+        #{remarks,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER},
+        #{city,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置全字段更新-->
+    <update id="update" parameterType="com.itheima.domain.store.Company">
+        update st_company
+        set name = #{name,jdbcType=VARCHAR},
+        expiration_date = #{expirationDate,jdbcType=TIMESTAMP},
+        address = #{address,jdbcType=VARCHAR},
+        license_id = #{licenseId,jdbcType=VARCHAR},
+        representative = #{representative,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        company_size = #{companySize,jdbcType=VARCHAR},
+        industry = #{industry,jdbcType=VARCHAR},
+        remarks = #{remarks,jdbcType=VARCHAR},
+        state = #{state,jdbcType=INTEGER},
+        city = #{city,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
