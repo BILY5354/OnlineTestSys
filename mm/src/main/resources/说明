@@ -12,11 +12,16 @@ CompanyServlet的page 和 size是找的事哪里？
 user中并非每一个属性都可以修改 service是业务层 web是表现层 user中有些事不能修改的 你改了也没用 不会更新到数据库的
 
 *************快速开发新模块方法*************
+java
 1.domain下创建新文件夹-新类
   设置改类的映射
 2，设置dao层
 3.设置service 对应的类与接口
 4.编写servlet 记得在baseServlet添加对应的service
+
+resources 中添加数据库连接文件
+
+WEB-INF中添加页面
 *************
 
 Ctrl + alt + L          格式化代码

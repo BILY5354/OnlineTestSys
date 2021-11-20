@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
             String id = UUID.randomUUID().toString();
             user.setId(id);
 
-            //密码必须经过加密处理MD5加密 将设置好的密码又放回去
+            //密码必须经过加密处理MD5加密
             user.setPassword(MD5Util.md5(user.getPassword()));
 
             //3.调用Dao层操作

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.store.CatalogDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.store.Catalog">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="course_id" jdbcType="VARCHAR" property="courseId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <association property="course" column="course_id" javaType="com.itheima.domain.store.Course"
+                     select="com.itheima.dao.store.CourseDao.findById"></association>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, name, remark , state , create_time , course_id
+    </sql>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_catalog
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_catalog
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from st_catalog where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="com.itheima.domain.store.Catalog">
+        insert into st_catalog (id, name, remark , state , create_time , course_id)
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+        #{state,jdbcType=VARCHAR} , #{createTime,jdbcType=TIMESTAMP}, #{courseId,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="com.itheima.domain.store.Catalog">
+        update st_catalog
+        set name = #{name,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        state = #{state,jdbcType=VARCHAR},
+        course_id = #{courseId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
