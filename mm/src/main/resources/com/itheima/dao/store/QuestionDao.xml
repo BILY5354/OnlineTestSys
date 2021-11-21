@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.store.QuestionDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.store.Question">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="company_id" jdbcType="VARCHAR" property="companyId"/>
+        <result column="catalog_id" jdbcType="VARCHAR" property="catalogId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="subject" jdbcType="VARCHAR" property="subject"/>
+        <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="difficulty" jdbcType="VARCHAR" property="difficulty"/>
+        <result column="is_classic" jdbcType="VARCHAR" property="isClassic"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="review_status" jdbcType="VARCHAR" property="reviewStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <!--<result column="picture" jdbcType="VARCHAR" property="picture"/>-->
+
+        <association
+            property="company"
+            column="company_id"
+            javaType="com.itheima.domain.store.Course"
+            select="com.itheima.dao.store.CompanyDao.findById"/>
+
+        <association
+            property="catalog"
+            column="catalog_id"
+            javaType="com.itheima.domain.store.Course"
+            select="com.itheima.dao.store.CatalogDao.findById"
+            />
+
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, catalog_id, company_id, remark,subject,analysis,type, difficulty, is_classic,
+        state, review_status, create_time
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question
+        order by create_time desc
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from st_question where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="com.itheima.domain.store.Question">
+        insert into st_question(id, company_id, catalog_id, remark, subject, analysis, type,
+                difficulty, is_classic, state, review_status, create_time )
+            values (#{id,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{catalogId,jdbcType=VARCHAR},
+                #{remark,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{analysis,jdbcType=VARCHAR},
+                #{type,jdbcType=VARCHAR}, #{difficulty,jdbcType=VARCHAR}, #{isClassic,jdbcType=VARCHAR},
+                #{state,jdbcType=VARCHAR}, #{reviewStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP} )
+    </insert>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="com.itheima.domain.store.Question">
+        update
+            st_question
+        set
+            company_id = #{companyId,jdbcType=VARCHAR},
+            catalog_id = #{catalogId,jdbcType=VARCHAR},
+            remark = #{remark,jdbcType=VARCHAR},
+            subject = #{subject,jdbcType=VARCHAR},
+            analysis = #{analysis,jdbcType=VARCHAR},
+            difficulty = #{difficulty,jdbcType=VARCHAR},
+            is_classic = #{isClassic,jdbcType=VARCHAR},
+            state = #{state,jdbcType=VARCHAR}
+        where
+            id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
