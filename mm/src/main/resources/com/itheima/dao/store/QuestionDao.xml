@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.dao.store.QuestionDao">
     <!--配置实体类属性和数据库表中列的对应关系-->
@@ -15,7 +15,7 @@
         <result column="state" jdbcType="VARCHAR" property="state"/>
         <result column="review_status" jdbcType="VARCHAR" property="reviewStatus"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <!--<result column="picture" jdbcType="VARCHAR" property="picture"/>-->
+        <result column="picture" jdbcType="VARCHAR" property="picture"/>
 
         <association
             property="company"
@@ -35,7 +35,7 @@
     <!--配置查询的列名公共SQL语句-->
     <sql id="Base_Column_List">
         id, catalog_id, company_id, remark,subject,analysis,type, difficulty, is_classic,
-        state, review_status, create_time
+        state, review_status, create_time, picture
     </sql>
 
     <!--配置查询所有，带条件-->
@@ -62,11 +62,12 @@
     <!--配置全字段插入，当某个字段没有值时，插入null-->
     <insert id="save" parameterType="com.itheima.domain.store.Question">
         insert into st_question(id, company_id, catalog_id, remark, subject, analysis, type,
-                difficulty, is_classic, state, review_status, create_time )
+                difficulty, is_classic, state, review_status, create_time, picture )
             values (#{id,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{catalogId,jdbcType=VARCHAR},
                 #{remark,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{analysis,jdbcType=VARCHAR},
                 #{type,jdbcType=VARCHAR}, #{difficulty,jdbcType=VARCHAR}, #{isClassic,jdbcType=VARCHAR},
-                #{state,jdbcType=VARCHAR}, #{reviewStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP} )
+                #{state,jdbcType=VARCHAR}, #{reviewStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{picture,jdbcType=VARCHAR}  )
     </insert>
 
     <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->

@@ -14,6 +14,15 @@ public class Question {
 
     private String picture;
 
+    public String getPicture() {
+        return picture;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    private String picture;
+
     private String analysis;	//题目分析
 
     private String type;       	//题目类型  1:单选，2：多选，3：简答
