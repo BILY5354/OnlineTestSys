@@ -28,7 +28,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <form id="editForm" action="${ctx}/store/question?operation=edit" method="post">
+                    <form id="editForm" action="${ctx}/store/question?operation=edit" method="post" enctype="multipart/form-data">
 
                         <input type="hidden" name="id" value="${question.id}">
 
@@ -60,11 +60,22 @@
                                     <textarea class="form-control" rows="3" name="remark">${question.remark}</textarea>
                                 </div>
 
-
                                 <div class="col-md-2 title rowHeight2x">题干</div>
                                 <div class="col-md-10 data rowHeight2x">
                                     <textarea class="form-control" rows="3" name="subject">${question.subject}</textarea>
                                 </div>
+
+                                <div class="col-md-2 title">题干图片</div>
+                                <div class="col-md-10 data ">
+                                    <input type="file" class="form-control" placeholder="题干图片" name="picture" value="${question.picture}">
+                                </div>
+
+                                <c:if test="${question.picture.length() > 0}">
+                                    <div class="col-md-2 title">题干图片</div>
+                                    <div class="col-md-10 data ">
+                                        <img src="${ctx}/upload/${question.picture}"/>
+                                    </div>
+                                </c:if>
 
                                 <div class="col-md-2 title rowHeight2x">题目分析</div>
                                 <div class="col-md-10 data rowHeight2x">

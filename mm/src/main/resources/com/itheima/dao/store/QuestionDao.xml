@@ -82,6 +82,7 @@
             analysis = #{analysis,jdbcType=VARCHAR},
             difficulty = #{difficulty,jdbcType=VARCHAR},
             is_classic = #{isClassic,jdbcType=VARCHAR},
+            picture = #{picture,jdbcType=VARCHAR},
             state = #{state,jdbcType=VARCHAR}
         where
             id = #{id,jdbcType=VARCHAR}
