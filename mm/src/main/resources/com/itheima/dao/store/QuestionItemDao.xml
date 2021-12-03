@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.store.QuestionItemDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="com.itheima.domain.store.QuestionItem">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="question_id" jdbcType="VARCHAR" property="questionId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="is_right" jdbcType="VARCHAR" property="isRight"/>
+        <!--<result column="picture" jdbcType="VARCHAR" property="picture"/>-->
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, question_id, content, picture, is_right
+    </sql>
+
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where question_id = #{questionId,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from st_question_item where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="com.itheima.domain.store.QuestionItem">
+        insert into st_question_item (id, question_id, content,
+        picture, is_right)
+        values (#{id,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+        #{picture,jdbcType=VARCHAR}, #{isRight,jdbcType=VARCHAR})
+    </insert>
+
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="com.itheima.domain.store.QuestionItem">
+        update st_question_item
+        set
+        content = #{content,jdbcType=VARCHAR},
+        <if test="picture != null">
+          picture = #{picture,jdbcType=VARCHAR},
+        </if>
+        is_right = #{isRight,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!--根据题目id查询所有选项-->
+    <select id="findByQuestionId" resultMap="BaseResultMap" parameterType="string">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where question_id = #{questionId}
+    </select>
+</mapper>

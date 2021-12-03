@@ -9,7 +9,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>黑马面面管理系统</title>
+    <title>在线练习管理系统</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
     <!-- Tell the browser to be responsive to screen width -->

@@ -4,18 +4,21 @@ D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\utils\TransactionUtil.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\impl\CourseServiceImpl.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\system\UserServlet.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\impl\QuestionItemServiceImpl.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\CatalogServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Catalog.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\system\User.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\system\DeptDao.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\impl\QuestionServiceImpl.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\utils\MD5Util.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\QuestionItemServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\system\DeptServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\store\CatalogDao.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Company.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\QuestionServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\store\CompanyDao.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\QuestionService.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\QuestionItemService.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\system\Dept.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\system\UserService.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\store\QuestionDao.java
@@ -23,6 +26,7 @@ D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\CourseServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\CourseService.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\BaseServlet.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\store\QuestionItemDao.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Question.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\utils\BeanUtil.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\CompanyServlet.java
@@ -30,6 +34,7 @@ D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\stor
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\system\UserDao.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Course.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\system\impl\DeptServiceImpl.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\QuestionItem.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\factory\MapperFactory.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\system\impl\UserServiceImpl.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\CompanyService.java

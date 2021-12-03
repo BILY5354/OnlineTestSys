@@ -8,7 +8,7 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>黑马面面管理系统</title>
+    <title>在线练习管理系统</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
     <!-- Tell the browser to be responsive to screen width -->
@@ -85,7 +85,7 @@
                         <th class="" style="padding-right:0px;">
                             <input type="checkbox" name="selid" onclick="checkAll('id',this)">
                         </th>
-                        <th class="sorting">企业</th>
+                        <th class="sorting">学校\企业</th>
                         <th class="sorting">类别</th>
                         <th class="sorting">题目</th>
                         <th class="sorting">类型</th>
@@ -126,6 +126,7 @@
                         </td>
                         <th class="text-center">
                             <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/question?operation=toEdit&id=${o.id}"'>编辑</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/questionItem?operation=list&questionId=${o.id}"'>编辑题目</button>
                             <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/question?operation=toExamine&id=${o.id}"'>审核</button>
                         </th>
                     </tr>
