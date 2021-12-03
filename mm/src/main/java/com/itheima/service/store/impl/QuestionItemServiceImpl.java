@@ -113,30 +113,9 @@ public class QuestionItemServiceImpl implements QuestionItemService {
         }
     }
 
-    @Override
-    public List<QuestionItem> findAll() {
-        SqlSession sqlSession = null;
-        try{
-            //1.获取SqlSession
-            sqlSession = MapperFactory.getSqlSession();
-            //2.获取Dao
-            QuestionItemDao questionItemDao = MapperFactory.getMapper(sqlSession,QuestionItemDao.class);
-            //3.调用Dao层操作
-            return questionItemDao.findAll();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-            //记录日志
-        }finally {
-            try {
-                TransactionUtil.close(sqlSession);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
 
     @Override
-    public PageInfo findAll(int page, int size) {
+    public PageInfo findAll(String questionId,   int page, int size) {
         SqlSession sqlSession = null;
         try{
             //1.获取SqlSession
@@ -145,7 +124,7 @@ public class QuestionItemServiceImpl implements QuestionItemService {
             QuestionItemDao questionItemDao = MapperFactory.getMapper(sqlSession,QuestionItemDao.class);
             //3.调用Dao层操作
             PageHelper.startPage(page,size);
-            List<QuestionItem> all = questionItemDao.findAll();
+            List<QuestionItem> all = questionItemDao.findAll(questionId);
             PageInfo pageInfo = new PageInfo(all);
             return pageInfo;
         }catch (Exception e){

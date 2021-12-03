@@ -13,5 +13,10 @@ public interface QuestionItemDao {
 
     QuestionItem findById(String id);
 
-    List<QuestionItem> findAll();
+    /**
+     * 分页查询数据
+     * @param questionId 题目对应的id
+     * @return
+     */
+    List<QuestionItem> findAll(String questionId);
 }

@@ -20,8 +20,6 @@ public class QuestionItemServlet extends BaseServlet {
         String operation = request.getParameter("operation");
         if ("list".equals(operation)) {
             this.list(request, response);
-        } else if ("toAdd".equals(operation)) {
-            this.toAdd(request, response);
         } else if ("save".equals(operation)) {
             this.save(request, response);
         } else if ("toEdit".equals(operation)) {
@@ -34,27 +32,17 @@ public class QuestionItemServlet extends BaseServlet {
     }
 
     private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //进入列表页
+        String questionId = request.getParameter("questionId");
+        //进入list页时添加对应的问题id，为添加操作使用
+        request.setAttribute("questionId", questionId);
         //获取数据
-        int page = 1;
-        int size = 5;
-        if (StringUtils.isNotBlank(request.getParameter("page"))) {
-            page = Integer.parseInt(request.getParameter("page"));
-        }
-        if (StringUtils.isNotBlank(request.getParameter("size"))) {
-            size = Integer.parseInt(request.getParameter("size"));
-        }
-        PageInfo all = questionItemService.findAll(page, size);
+        PageInfo all = questionItemService.findAll(questionId, 1, 100);
         //将数据保存到指定的位置
         request.setAttribute("page", all);
         //跳转页面
         request.getRequestDispatcher("/WEB-INF/pages/store/questionItem/list.jsp").forward(request, response);
     }
 
-    private void toAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //跳转页面
-        request.getRequestDispatcher("/WEB-INF/pages/store/questionItem/add.jsp").forward(request, response);
-    }
 
     private void save(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //将数据获取到，封装成一个对象
@@ -62,7 +50,7 @@ public class QuestionItemServlet extends BaseServlet {
         //调用业务层接口save
         questionItemService.save(questionItem);
         //跳转回到页面list
-        response.sendRedirect(request.getContextPath() + "/store/questionItem?operation=list");
+        list(request, response);
     }
 
     private void toEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

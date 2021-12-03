@@ -35,17 +35,13 @@ public interface QuestionItemService {
      */
     QuestionItem findById(String id);
 
-    /**
-     * 查询全部的数据
-     * @return 全部数据的列表对象
-     */
-    List<QuestionItem> findAll();
 
     /**
      * 分页查询数据
+     * @param questionId 题目对应的id
      * @param page 页码
      * @param size 每页显示的数据总量
      * @return
      */
-    PageInfo findAll(int page, int size);
+    PageInfo findAll(String questionId,   int page, int size);
 }

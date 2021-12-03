@@ -48,7 +48,8 @@
         <!--订单信息-->
         <div class="panel panel-default">
             <div class="panel-heading">新增选项</div>
-            <form id="editForm" action="${ctx}/store/questionItem?operation=save" method="post">
+            <form id="editForm" action="${ctx}/store/questionItem?operation=save" method="post" >
+                <input type="text" name="questionId" value="${questionId}">
                 <div class="row data-type" style="margin: 0px">
 
                     <div class="col-md-2 title">选项内容</div>
@@ -112,8 +113,6 @@
                     <div class="pull-left">
                         <div class="form-group form-inline">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/questionItem?operation=toAdd"'><i class="fa fa-file-o"></i> 新建</button>
-                                <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                                 <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                             </div>
                         </div>
@@ -153,12 +152,12 @@
                 </div>
                 <!-- 数据表格 /-->
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                <jsp:include page="../../common/page.jsp">
-                    <jsp:param value="${ctx}/store/question?operation=list" name="pageUrl"/>
-                </jsp:include>
-            </div>
+<%--            <!-- /.box-body -->--%>
+<%--            <div class="box-footer">--%>
+<%--                <jsp:include page="../../common/page.jsp">--%>
+<%--                    <jsp:param value="${ctx}/store/question?operation=list" name="pageUrl"/>--%>
+<%--                </jsp:include>--%>
+<%--            </div>--%>
         </div>
 
     </section>
