@@ -21,7 +21,7 @@
         function deleteById(id) {
             var questionId = '${questionId}';
             if(confirm("你确认要删除此条记录吗？")) {
-                window.location.href="${ctx}/store/questionItem?operation=delete&id="+id;
+                window.location.href="${ctx}/store/questionItem?operation=delete&questionId=${questionId}&id="+id;
             }
         }
     </script>
@@ -48,13 +48,14 @@
         <!--订单信息-->
         <div class="panel panel-default">
             <div class="panel-heading">新增选项</div>
-            <form id="editForm" action="${ctx}/store/questionItem?operation=save" method="post" >
-                <input type="text" name="questionId" value="${questionId}">
+            <form id="editForm" action="${ctx}/store/questionItem?operation=${operation}" method="post" >
+                <input type="text" name="questionId" value="${questionId}">${operation}
+                <input type="text" name="id" value="${questionItem.id}">${operation}
                 <div class="row data-type" style="margin: 0px">
 
                     <div class="col-md-2 title">选项内容</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="选项内容" name="content">
+                        <input type="text" class="form-control" placeholder="选项内容" name="content" value="${questionItem.content}">
                     </div>
 
                     <div class="col-md-2 title">选项图片</div>
@@ -62,16 +63,15 @@
                         <input type="file" class="form-control" placeholder="请选择" name="picture" >
                     </div>
 
-                    <div class="col-md-2 title">是否正确答案</div>
+                    <%--<div class="col-md-2 title">是否正确答案</div>
                     <div class="col-md-4 data">
                         <select class="form-control" name="isRight">
                             <option value="">请选择</option>
                             <option value="1">正确答案</option>
                             <option value="0">错误选项</option>
                         </select>
-                    </div>
+                    </div>--%>
 
-                    <%--
                     <div class="col-md-2 title">是否正确答案</div>
                     <div class="col-md-4 data">
                         <select class="form-control" name="isRight">
@@ -80,7 +80,6 @@
                             <option value="0" ${questionItem.isRight eq "0" ? "selected" : ""}>错误选项</option>
                         </select>
                     </div>
-                    --%>
                 </div>
             </form>
         </div>
@@ -140,7 +139,7 @@
                                 <td>${o.content}</td>
                                 <td>${o.isRight eq "1" ? "正确答案" : ""}</td>
                                 <td>
-                                    <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/questionItem?operation=toEdit&id=${o.id}"'>编辑</button>
+                                    <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/questionItem?operation=toEdit&questionId=${questionId}&id=${o.id}"'>编辑</button>
                                     <button type="button" class="btn bg-olive btn-xs" onclick="deleteById('${o.id}')">删除</button>
                                 </td>
                             </tr>

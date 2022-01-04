@@ -32,8 +32,8 @@
 <div id="frameContent" class="content-wrapper" style="margin-left:0px;">
 <section class="content-header">
     <h1>
-        学校\企业管理
-        <small>学校\企业列表</small>
+        学校/企业管理
+        <small>学校/企业列表</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
@@ -80,10 +80,10 @@
                         <th class="" style="padding-right:0px;">
 
                         </th>
-                        <th class="sorting">学校\企业名称</th>
+                        <th class="sorting">学校\学校/企业名称</th>
                         <th class="sorting">所在地</th>
                         <th class="sorting">地址</th>
-                        <th class="sorting">企业法人</th>
+                        <th class="sorting">学校/企业法人</th>
                         <th class="sorting">联系方式</th>
                         <th class="sorting">所属行业</th>
                         <th class="sorting">状态</th>

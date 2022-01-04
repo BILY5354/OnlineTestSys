@@ -21,13 +21,13 @@
     <!-- 内容头部 -->
     <section class="content-header" class="content-wrapper" style="margin-left:0px;">
         <h1>
-            企业管理
-            <small>企业表单</small>
+            学校/企业管理
+            <small>学校/企业表单</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li><a href="all-order-manage-list.html">企业管理</a></li>
-            <li class="active">企业表单</li>
+            <li><a href="all-order-manage-list.html">学校/企业管理</a></li>
+            <li class="active">学校/企业表单</li>
         </ol>
     </section>
     <!-- 内容头部 /-->
@@ -37,13 +37,13 @@
 
         <!--添加内容信息-->
         <div class="panel panel-default">
-            <div class="panel-heading">企业信息</div>
+            <div class="panel-heading">学校/企业信息</div>
             <form id="editForm" action="${ctx}/store/company?operation=save" method="post">
                 <input type="hidden" name="id" value="${company.id}">
                 <div class="row data-type" style="margin: 0px">
-                    <div class="col-md-2 title">企业名称</div>
+                    <div class="col-md-2 title">学校/企业名称</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="企业名称" name="name" value="${company.name}">
+                        <input type="text" class="form-control" placeholder="学校/企业名称" name="name" value="${company.name}">
                     </div>
 
                     <div class="col-md-2 title">营业执照</div>
@@ -56,9 +56,9 @@
                         <input type="text" class="form-control" placeholder="所在地" name="city" value="${company.city}">
                     </div>
 
-                    <div class="col-md-2 title">企业地址</div>
+                    <div class="col-md-2 title">学校/企业地址</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="企业地址" name="address" value="${company.address}">
+                        <input type="text" class="form-control" placeholder="学校/企业地址" name="address" value="${company.address}">
                     </div>
 
                     <div class="col-md-2 title">法人代表</div>
@@ -71,9 +71,9 @@
                         <input type="text" class="form-control" placeholder="联系电话" name="phone" value="${company.phone}">
                     </div>
 
-                    <div class="col-md-2 title">公司规模</div>
+                    <div class="col-md-2 title">学校/企业规模</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="公司规模" name="companySize" value="${company.companySize}">
+                        <input type="text" class="form-control" placeholder="学校/企业规模" name="companySize" value="${company.companySize}">
                     </div>
 
                     <div class="col-md-2 title">所属行业</div>
@@ -90,13 +90,13 @@
                     </div>
 
 
-                    <div class="col-md-2 title">到期时间</div>
+                    <div class="col-md-2 title">注册时间</div>
                     <div class="col-md-4 data">
                         <div class="input-group date">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" placeholder="到期时间"  name="expirationDate" class="form-control pull-right"
+                            <input type="text" placeholder="注册时间"  name="expirationDate" class="form-control pull-right"
                                    value="<fmt:formatDate value="${company.expirationDate}" pattern="yyyy-MM-dd"/>" id="expirationDate">
                         </div>
                     </div>
