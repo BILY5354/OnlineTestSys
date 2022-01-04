@@ -3,6 +3,8 @@ package com.itheima.service.store;
 import com.github.pagehelper.PageInfo;
 import com.itheima.domain.store.Question;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public interface QuestionService {
@@ -49,4 +51,11 @@ public interface QuestionService {
      * @return
      */
     PageInfo findAll(int page, int size);
+
+    /**
+     * 获取包含了数据的流对象
+     * @return 包含了报表数据的流对象
+     * @throws IOException
+     */
+    ByteArrayOutputStream getReport() throws IOException;
 }
