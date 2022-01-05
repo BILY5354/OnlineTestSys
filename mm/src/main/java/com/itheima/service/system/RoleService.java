@@ -48,4 +48,11 @@ public interface RoleService {
      * @return
      */
     PageInfo findAll(int page, int size);
+
+    /**
+     * 建立角色与模块之间的关联
+     * @param roleId 角色id
+     * @param moduleIds 模块id（多个）
+     */
+    void updateRoleModule(String roleId, String moduleIds);
 }

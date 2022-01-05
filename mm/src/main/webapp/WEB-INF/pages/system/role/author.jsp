@@ -24,7 +24,9 @@
         var zTreeObj;
         var setting = {check: {enable: true},data: {simpleData: {enable: true}}};
 
-        var zNodes = [
+        var zNodes = ${roleModuleJson}
+
+           /* [
             {id:1,pId:0,name:'平台系统管理',checked:false},
             {id:101,pId:1,name:'企业管理',checked:false},
             {id:102,pId:1,name:'部门管理',checked:false},
@@ -40,7 +42,7 @@
             {id:3,pId:0,name:'会员管理',checked:false},
             {id:301,pId:3,name:'会员账号管理',checked:false},
             {id:302,pId:3,name:'会员答题管理',checked:false}
-        ]
+        ]*/
 
         $(document).ready(function(){
             /*
@@ -60,6 +62,7 @@
             //1.获取所有的勾选权限节点
             var nodes = zTreeObj.getCheckedNodes(true);//true:被勾选，false：未被勾选
             //2.循环nodes，获取每个节点的id，并将数据加入数组
+            //数据的临时存储数组，为了方便内容连接称为一个有逗号分隔的字符串
             var moduleArrays = [];
             for(var i=0;i<nodes.length;i++) {
                 moduleArrays.push(nodes[i].id);
