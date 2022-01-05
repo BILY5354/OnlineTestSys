@@ -3,6 +3,7 @@ package com.itheima.service.store;
 import com.github.pagehelper.PageInfo;
 import com.itheima.domain.store.QuestionItem;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface QuestionItemService {
@@ -44,4 +45,5 @@ public interface QuestionItemService {
      * @return
      */
     PageInfo findAll(String questionId,   int page, int size);
+
 }

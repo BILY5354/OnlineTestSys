@@ -1,3 +1,4 @@
+/*
 package com.itheima.service.store;
 
 import com.github.pagehelper.PageInfo;
@@ -25,7 +26,7 @@ public class QuestionItemServiceTest {
 
     @Test
     public void testFindAll2() {
-        List<QuestionItem> all = questionItemService.findAll();
+        List<QuestionItem> all = questionItemService.findAll('1',1,1);
         for(int i = 0;i < all.size(); i++) {
             System.out.println(all.get(i));
         }
@@ -36,3 +37,4 @@ public class QuestionItemServiceTest {
         questionItemService = null;
     }
 }
+*/
