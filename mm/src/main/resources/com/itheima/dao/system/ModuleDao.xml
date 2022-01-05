@@ -65,5 +65,34 @@
         where module_id = #{id,jdbcType=VARCHAR}
     </update>
 
+    <select id="findAuthorDataByRoleId" parameterType="string" resultType="java.util.Map">
+        select
+            module_id as id,
+            parent_id as pId,
+            name as name,
+            case
+                when module_id in (select module_id from ss_role_module where role_id = #{roleId})
+                    then 'true'
+                    else 'false'
+                end
+            as checked
+        from
+            ss_module
+    </select>
+
+   <!-- <select id="findModuleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        /*userid->用户角色关系表->roleid->角色模块关系表->moduleid->module信息*/
+        SELECT DISTINCT
+            m.module_id, m.parent_id, m.name, m.ctype, m.state, m.curl, m.remark
+        FROM
+            ss_module AS m,
+            ss_role_module AS rm,
+            ss_role_user AS ru
+        WHERE
+            m.module_id = rm.module_id
+        AND	rm.role_id = ru.role_id
+        AND	ru.user_id = #{id,jdbcType=VARCHAR}
+    </select>-->
+
 
 </mapper>

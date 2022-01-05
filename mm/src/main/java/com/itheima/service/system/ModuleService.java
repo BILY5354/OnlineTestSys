@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.itheima.domain.system.Module;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ModuleService {
 
@@ -48,4 +49,10 @@ public interface ModuleService {
      * @return
      */
     PageInfo findAll(int page, int size);
+
+    /**
+     * 根据角色id获取对应的所有模块关联数据
+     * @param roleId 角色id
+     */
+    List<Map> findAuthorDataByRoleId(String roleId);
 }
