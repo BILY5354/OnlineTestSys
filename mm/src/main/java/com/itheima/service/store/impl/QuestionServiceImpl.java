@@ -114,6 +114,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public void update_review() {
+
+    }
+
+    @Override
     public Question findById(String id) {
         SqlSession sqlSession = null;
         try{

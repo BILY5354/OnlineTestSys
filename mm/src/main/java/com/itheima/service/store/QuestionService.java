@@ -32,6 +32,14 @@ public interface QuestionService {
     void update(Question question,boolean flag);
 
     /**
+     * 修改
+     * @param question
+     * @param flag
+     * @return
+     */
+    void update_review();
+
+    /**
      * 查询单个
      * @param id 查询的条件（id）
      * @return 查询的结果，单个对象
