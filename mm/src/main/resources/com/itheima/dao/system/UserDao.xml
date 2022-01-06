@@ -70,4 +70,17 @@
         where user_id = #{id,jdbcType=VARCHAR}
     </update>
 
+
+    <!--配置根据roleId删除关系表数据-->
+    <delete id="deleteRole" parameterType="java.lang.String">
+        delete from ss_role_user
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="updateRole" parameterType="map">
+        insert into ss_role_user (role_id, user_id)
+        values (#{roleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
+    </insert>
+
 </mapper>

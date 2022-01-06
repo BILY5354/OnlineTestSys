@@ -2,6 +2,7 @@ package com.itheima.web.controller.system;
 
 import com.github.pagehelper.PageInfo;
 import com.itheima.domain.system.Dept;
+import com.itheima.domain.system.Role;
 import com.itheima.domain.system.User;
 import com.itheima.utils.BeanUtil;
 import com.itheima.web.controller.BaseServlet;
@@ -35,8 +36,11 @@ public class UserServlet extends BaseServlet {
             this.delete(request, response);
         } else if ("userRoleList".equals(operation)) {
             this.userRoleList(request, response);
+        } else if ("updateRole".equals(operation)) {
+            this.updateRole(request, response);
         }
     }
+
 
     private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //进入列表页
@@ -107,12 +111,25 @@ public class UserServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath() + "/system/user?operation=list");
     }
 
-    private void userRoleList(HttpServletRequest request, HttpServletResponse response) {
-        /*String userId = request.getParameter("id");
-
-        List<Role> all = roleService.finaAll();*/
+    private void userRoleList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userId = request.getParameter("id");
+        User user = userService.findById(userId);
+        //将数据加载到指定区域，供页面获取
+        request.setAttribute("user", user);
+        //获取所有的角色列表
+        List<Role> all = roleService.findAllRoleByUserId(userId);
+        request.setAttribute("roleList", all);
+        //跳转页面
+        request.getRequestDispatcher("/WEB-INF/pages/system/user/role.jsp").forward(request, response);
     }
 
+    private void updateRole(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String userId = request.getParameter("userId");
+        String[] roleIds = request.getParameterValues("roleIds");
+        userService.updateRole(userId,roleIds);
+        //跳转回到页面list
+        response.sendRedirect(request.getContextPath()+"/system/user?operation=list");
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

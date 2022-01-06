@@ -64,4 +64,19 @@
     values (#{roleId,jdbcType=VARCHAR}, #{moduleId,jdbcType=VARCHAR})
     </insert>
 
+    <!--配置根据ID查询-->
+    <select id="findAllRoleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+            role_id,
+            NAME,
+            CASE
+                WHEN role_id IN (SELECT role_id FROM ss_role_user WHERE user_id = #{'userId'})
+                THEN 'checked'
+                ELSE ''
+            END
+            AS remark
+        FROM
+            ss_role
+    </select>
+
 </mapper>

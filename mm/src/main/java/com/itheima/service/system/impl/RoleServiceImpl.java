@@ -192,4 +192,28 @@ public class RoleServiceImpl implements RoleService {
             }
         }
     }
+
+    @Override
+    public List<Role> findAllRoleByUserId(String userId) {
+        SqlSession sqlSession = null;
+        try{
+            //1.获取SqlSession
+            sqlSession = MapperFactory.getSqlSession();
+            //2.获取Dao
+            RoleDao roleDao = MapperFactory.getMapper(sqlSession,RoleDao.class);
+            //3.调用Dao层操作
+            return roleDao.findAllRoleByUserId(userId);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+            //记录日志
+        }finally {
+            try {
+                TransactionUtil.close(sqlSession);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
