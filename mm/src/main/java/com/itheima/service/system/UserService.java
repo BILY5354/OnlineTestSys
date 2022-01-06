@@ -1,6 +1,7 @@
 package com.itheima.service.system;
 
 import com.github.pagehelper.PageInfo;
+import com.itheima.domain.system.Module;
 import com.itheima.domain.system.User;
 
 import java.util.List;
@@ -58,4 +59,11 @@ public interface UserService {
      * @return
      */
     User login(String email, String pwd);
+
+    /**
+     * 根据用户id查询所有可以操作的菜单对象
+     * @param id 用户的id
+     * @return
+     */
+    List<Module> findModuleById(String id);
 }
