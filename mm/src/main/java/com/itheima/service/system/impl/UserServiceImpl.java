@@ -2,7 +2,9 @@ package com.itheima.service.system.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.itheima.dao.system.ModuleDao;
 import com.itheima.dao.system.UserDao;
+import com.itheima.domain.system.Module;
 import com.itheima.domain.system.User;
 import com.itheima.factory.MapperFactory;
 import com.itheima.service.system.UserService;
@@ -186,6 +188,51 @@ public class UserServiceImpl implements UserService {
             TransactionUtil.commit(sqlSession);
         }catch (Exception e){
             TransactionUtil.rollback(sqlSession);
+            throw new RuntimeException(e);
+            //记录日志
+        }finally {
+            try {
+                TransactionUtil.close(sqlSession);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public User login(String email, String pwd) {
+        SqlSession sqlSession = null;
+        try{
+            //1.获取SqlSession
+            sqlSession = MapperFactory.getSqlSession();
+            //2.获取Dao
+            UserDao userDao = MapperFactory.getMapper(sqlSession,UserDao.class);
+            //3.调用Dao层操作
+            pwd = MD5Util.md5(pwd);
+            return userDao.findByEmailAndPwd(email,pwd);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+            //记录日志
+        }finally {
+            try {
+                TransactionUtil.close(sqlSession);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public List<Module> findModuleById(String id) {
+        SqlSession sqlSession = null;
+        try{
+            //1.获取SqlSession
+            sqlSession = MapperFactory.getSqlSession();
+            //2.获取Dao
+            ModuleDao moduleDao = MapperFactory.getMapper(sqlSession,ModuleDao.class);
+            //3.调用Dao层操作
+            return moduleDao.findModuleByUserId(id);
+        }catch (Exception e){
             throw new RuntimeException(e);
             //记录日志
         }finally {

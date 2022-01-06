@@ -80,7 +80,7 @@
             ss_module
     </select>
 
-   <!-- <select id="findModuleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="findModuleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
         /*userid->用户角色关系表->roleid->角色模块关系表->moduleid->module信息*/
         SELECT DISTINCT
             m.module_id, m.parent_id, m.name, m.ctype, m.state, m.curl, m.remark
@@ -92,7 +92,7 @@
             m.module_id = rm.module_id
         AND	rm.role_id = ru.role_id
         AND	ru.user_id = #{id,jdbcType=VARCHAR}
-    </select>-->
+    </select>
 
 
 </mapper>

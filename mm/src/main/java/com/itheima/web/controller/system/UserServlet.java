@@ -2,6 +2,7 @@ package com.itheima.web.controller.system;
 
 import com.github.pagehelper.PageInfo;
 import com.itheima.domain.system.Dept;
+import com.itheima.domain.system.Module;
 import com.itheima.domain.system.Role;
 import com.itheima.domain.system.User;
 import com.itheima.utils.BeanUtil;
@@ -38,6 +39,12 @@ public class UserServlet extends BaseServlet {
             this.userRoleList(request, response);
         } else if ("updateRole".equals(operation)) {
             this.updateRole(request, response);
+        } else if ("login".equals(operation)) {
+            this.login(request, response);
+        } else if ("logout".equals(operation)) {
+            this.logout(request, response);
+        } else if ("home".equals(operation)) {
+            this.home(request, response);
         }
     }
 
@@ -126,9 +133,35 @@ public class UserServlet extends BaseServlet {
     private void updateRole(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String userId = request.getParameter("userId");
         String[] roleIds = request.getParameterValues("roleIds");
-        userService.updateRole(userId,roleIds);
+        userService.updateRole(userId, roleIds);
         //跳转回到页面list
-        response.sendRedirect(request.getContextPath()+"/system/user?operation=list");
+        response.sendRedirect(request.getContextPath() + "/system/user?operation=list");
+    }
+
+    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String email = request.getParameter("email");
+        String pwd = request.getParameter("password");
+        User user = userService.login(email, pwd);//判断密码
+        if (user != null) {
+            request.getSession().setAttribute("loginUser", user);
+            //如果登录成功，加载该用户对应的角色对应的所有模块
+            List<Module> moduleList = userService.findModuleById(user.getId());
+            request.setAttribute("moduleList",moduleList);
+            //跳转页面
+            request.getRequestDispatcher("/WEB-INF/pages/home/main.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        }
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().removeAttribute("loginUser");
+        response.sendRedirect(request.getContextPath()+"/login.jsp");
+    }
+
+
+    private void home(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/pages/home/home.jsp").forward(request, response);
     }
 
     @Override

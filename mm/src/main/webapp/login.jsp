@@ -29,13 +29,13 @@
     <div class="login-box-body">
         <p class="login-box-msg">登录系统</p>
         <%--<form action="${pageContext.request.contextPath}/login?operation=login" method="post">--%>
-        <form action="${pageContext.request.contextPath}/pages/home/main.jsp" method="post">
+        <form action="${pageContext.request.contextPath}/system/user?operation=login" method="post">
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email" value="test@itcast.cn">
+                <input type="email" name="email" class="form-control" placeholder="Email" value="pmy@test.com">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="密码" value="test">
+                <input type="password" name="password" class="form-control" placeholder="密码" value="123456">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">

@@ -18,4 +18,6 @@ public interface ModuleDao {
     List<Module> findAll();
 
     List<Map> findAuthorDataByRoleId(String roleId);
+
+    List<Module> findModuleByUserId(String id);
 }
