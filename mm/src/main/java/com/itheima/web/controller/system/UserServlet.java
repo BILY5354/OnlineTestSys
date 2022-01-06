@@ -147,6 +147,16 @@ public class UserServlet extends BaseServlet {
             //如果登录成功，加载该用户对应的角色对应的所有模块
             List<Module> moduleList = userService.findModuleById(user.getId());
             request.setAttribute("moduleList",moduleList);
+
+            //当前登录用户对应的可操作模块的所有url拼接成一个大的字符串
+            StringBuffer sbf = new StringBuffer();
+            for(Module m: moduleList){
+                sbf.append(m.getCurl());
+                sbf.append(',');
+            }
+            request.getSession().setAttribute("authorStr",sbf.toString());
+
+
             //跳转页面
             request.getRequestDispatcher("/WEB-INF/pages/home/main.jsp").forward(request, response);
         } else {
