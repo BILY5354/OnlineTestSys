@@ -55,4 +55,6 @@ public interface RoleService {
      * @param moduleIds 模块id（多个）
      */
     void updateRoleModule(String roleId, String moduleIds);
+
+    List<Role> findAllRoleByUserId(String userId);
 }

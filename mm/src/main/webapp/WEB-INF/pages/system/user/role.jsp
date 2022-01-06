@@ -38,12 +38,12 @@
             </div>
             <div class="box-body">
                 <form id="urform" action="${ctx}/system/user?operation=updateRole" method="post">
-                    <input type="hidden" name="userId" value="${user.id}"/>
+                    <input type="text" name="userId" value="${user.id}"/>
                     <div class="textbox" id="centerTextbox">
                             <div style="text-align:left">
                                 <c:forEach items="${roleList}" var="role" varStatus="vs">
                                      <span style="padding:3px;margin-right:30px;width: 160px;display: inline-block">
-                                         <input type="checkbox" name="roleIds" value="${role.id}"/>${role.name}
+                                         <input type="checkbox" name="roleIds" value="${role.id}" ${role.remark}/>${role.name}
                                      </span>
                                 </c:forEach>
                             </div>
