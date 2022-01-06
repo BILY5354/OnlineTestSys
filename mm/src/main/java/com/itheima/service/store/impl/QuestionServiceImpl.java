@@ -31,7 +31,8 @@ public class QuestionServiceImpl implements QuestionService {
             question.setId(id);
 
             //设置新创建的题目默认的审核状态为未审核（0）
-            question.setReviewStatus("0");
+            //此功能需添加 现在直接为1 即审核通过
+            question.setReviewStatus("1");
             question.setCreateTime(new Date());
             //检测到前端上传文件了，记录文件名，否则不记录
             if(flag) {
