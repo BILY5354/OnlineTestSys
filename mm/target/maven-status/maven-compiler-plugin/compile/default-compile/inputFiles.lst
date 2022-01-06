@@ -34,7 +34,6 @@ D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\cont
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\impl\QuestionServiceImpl.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\utils\MD5Util.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\system\DeptServlet.java
-D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Module.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Company.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\QuestionServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\QuestionService.java
@@ -44,6 +43,7 @@ D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\service\store\CourseService.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\BaseServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\dao\store\QuestionItemDao.java
+D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\system\Module.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\store\CompanyServlet.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\domain\store\Course.java
 D:\WorkSpace\javaCode\JavaEE\OnlineTestSys\mm\src\main\java\com\itheima\web\controller\system\RoleServlet.java

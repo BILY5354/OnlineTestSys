@@ -196,4 +196,27 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    @Override
+    public User login(String email, String pwd) {
+        SqlSession sqlSession = null;
+        try{
+            //1.获取SqlSession
+            sqlSession = MapperFactory.getSqlSession();
+            //2.获取Dao
+            UserDao userDao = MapperFactory.getMapper(sqlSession,UserDao.class);
+            //3.调用Dao层操作
+            pwd = MD5Util.md5(pwd);
+            return userDao.findByEmailAndPwd(email,pwd);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+            //记录日志
+        }finally {
+            try {
+                TransactionUtil.close(sqlSession);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 }

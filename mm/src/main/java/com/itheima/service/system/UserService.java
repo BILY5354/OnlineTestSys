@@ -50,4 +50,12 @@ public interface UserService {
     PageInfo findAll(int page, int size);
 
     void updateRole(String userId, String[] roleIds);
+
+    /**
+     * 根据邮箱和密码登录
+     * @param email
+     * @param pwd
+     * @return
+     */
+    User login(String email, String pwd);
 }

@@ -83,4 +83,11 @@
         values (#{roleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
     </insert>
 
+    <select id="findByEmailAndPwd" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_user
+        where email = #{email,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+    </select>
+
 </mapper>
