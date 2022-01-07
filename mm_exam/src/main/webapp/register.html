@@ -218,15 +218,15 @@
                     if (valid) {
                         // alert('submit!');
                         axios.post('/member/register', this.ruleForm).then(function (response) {
-                            alert(response.data);
-                            /*//得到响应数据
+                            /*alert(response.data);*/
+                            //得到响应数据
                             var res = response.data;
                             //判断成功与否
                             if(res.flag){
                                 window.open('/index.html','_self');
                             }else{
                                 alert("提示："+res.message)
-                            }*/
+                            }
                         }).catch(function (err) {
                             console.log(err)
                         });
