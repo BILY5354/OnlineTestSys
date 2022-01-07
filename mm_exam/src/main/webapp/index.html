@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑马面面</title>
+    <link rel="stylesheet" href="/css/tt.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="./js/vue.js" type="text/javascript"></script>
+    <script src="./js/vue-router.js" type="text/javascript"></script>
+    <script src="./js/axios-0.18.0.js" type="text/javascript"></script>
+    <script src="./element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/vue-cookies@1.7.0/vue-cookies.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="top">
+        <span class="top-right"  id="register" style="display: none">
+            <a href="./register.html" style="color:white">注册</a>
+        </span>
+
+        <span class="top-right" id="login" style="display: none">
+            <a href="./login.html" style="color:white">登录</a>
+        </span>
+
+        <span class="top-right"  id="exit" style="display: none">
+            <a href="#" @click="logout()" style="color:white">退出</a>
+        </span>
+
+        <span class="top-right"  id="myexam" style="display: none">
+            <a href="./history.html" style="color:white">历史测试</a>
+        </span>
+
+        <span class="top-right" id="exam" style="display: none">
+            <a href="./paper.html" style="color:white">开始测试</a>
+        </span>
+
+        <span class="top-right" id="nickname" style="display: none">
+            {{nickname}},你好
+        </span>
+    </div>
+
+    <div class="container">
+    <div class="left">
+        <a>
+            <img src="/img/logo.png" style="width: 200px;height: 70px"><br/>
+        </a>
+        <ul>
+            <li><a class="channel-item active" href="#">
+                <span class="">
+                    推荐
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    视频解题
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    热点题型
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    解题直播
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    热门题库
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    高手过招
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    一对一解题
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    入职实测
+                </span>
+            </a></li>
+
+        </ul>
+
+    </div>
+    <div class="center">
+        <ul class="news_list">
+            <li class="">
+                <div class="news-box">
+                    <div class="single-mode-lbox">
+                        <a href="#" target="_blank">
+                            <img src="img/question_store.png">
+                        </a>
+                    </div>
+                    <div class="single-mode-rbox">
+
+                        <div class="title-box">
+                            <a href="group/6760571446231040523/" class="link">阿里题库解析</a>
+                        </div>
+
+                        <div class="">
+                            <div class="bui-left footer-bar-left">
+                                <a href="#" target="_blank" class="footer-bar-action tag tag-style-other">
+                                    新鲜出炉
+                                </a>
+
+                                <a href="#" target="_blank" class="footer-bar-action media-avatar">
+                                    <img src="img/question_store.png">
+                                </a>
+                                <a href="#" target="_blank" class="footer-bar-action source">&nbsp;黑马论坛&nbsp;⋅
+                                </a>
+                                <a href="#" target="_blank" class="footer-bar-action source">&nbsp;5万+阅读&nbsp;⋅
+                                </a>
+                                <span class="footer-bar-action">&nbsp;23分钟前</span></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <!-- <div class="loading" style="text-align: center; height: 80px">
+            <img src="img/loading2.gif" height="100%">
+        </div> -->
+    </div>
+    <div class="right">
+        <div class="tt-input tt-input-group tt-input-group__append">
+            <div class="tt-input ">
+                <input type="text" placeholder="请输入要搜索内容" autocomplete="off" class="tt-input__inner">
+            </div>
+            <div class="tt-input">
+                <button type="button" class="tt-button tt-button--default">
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    /* 脚本中创建对象,处理业务 */
+    var vm = new Vue({
+            el: '#app',
+            data: {
+                nickname: '',
+            },
+            methods: {
+                checkLogin() {
+                    //判断当前用户是否登录了，判断现在是否有登录人的信息
+
+                    /*  状态1：未登录
+                    document.querySelector("#register").style.display = 'block';
+                    document.querySelector("#login").style.display = 'block';
+                    document.querySelector("#myexam").style.display = 'none';
+                    document.querySelector("#exam").style.display = 'none';
+                    document.querySelector("#exit").style.display = 'none';
+                    document.querySelector("#nickname").style.display = 'none';
+                    */
+
+
+                    /*  状态2：已登录
+                    document.querySelector("#register").style.display = 'none';
+                    document.querySelector("#login").style.display = 'none';
+                    document.querySelector("#myexam").style.display = 'block';
+                    document.querySelector("#exam").style.display = 'block';
+                    document.querySelector("#exit").style.display = 'block';
+                    document.querySelector("#nickname").style.display = 'block';
+                    */
+
+                    let _this = this;
+                    //从localStorage中获取数据，获取当前保存的用户名，再根据用户名获取后台是否登录的状态
+                    if(!window.localStorage){
+                        alert("浏览器不支持localStorage，请升级浏览器")
+                    }else {
+                        //获取localStorage对象
+                        let storage = window.localStorage;
+                        alert("id："+storage.id);
+
+                        //测试是否有登录数据，id
+                        if(storage.id ==  undefined){
+                            //如果本地没有用户信息，显示登陆和注册按钮
+                            document.querySelector("#register").style.display = 'block';
+                            document.querySelector("#login").style.display = 'block';
+                            document.querySelector("#myexam").style.display = 'none';
+                            document.querySelector("#exam").style.display = 'none';
+                            document.querySelector("#exit").style.display = 'none';
+                            document.querySelector("#nickname").style.display = 'none';
+                        }else {
+
+
+                            //如果本地存在用户信息，需要确认服务器是否存在当前用户登录信息（redis中）
+                            //发送请求，根据当前id去服务器中查找对应的数据
+                            axios.post('/member/checkLogin', '{"id":"'+storage.id+'"}').then(function (response) {
+                                //alert(response.data.data)
+
+
+                                //获取响应数据
+                                let res = response.data;
+                                //alert("redis服务器中存储的用户名信息  : "+res.data)
+                                //判定本地用户对应是否处于登录状态，处于登录状态的用户具有用户名信息
+                                if(res.data == undefined){
+                                    //如果没有用户名信息，当前用户未登录，显示登陆与注册按钮
+                                    document.querySelector("#register").style.display = 'block';
+                                    document.querySelector("#login").style.display = 'block';
+                                    document.querySelector("#myexam").style.display = 'none';
+                                    document.querySelector("#exam").style.display = 'none';
+                                    document.querySelector("#exit").style.display = 'none';
+                                    document.querySelector("#nickname").style.display = 'none';
+                                }else{
+                                    //如果具有用户名信息，显示用户答题相关按钮
+                                    //设置vue对象nickname属性值
+                                    _this.nickname = res.data;
+                                    document.querySelector("#register").style.display = 'none';
+                                    document.querySelector("#login").style.display = 'none';
+                                    document.querySelector("#myexam").style.display = 'block';
+                                    document.querySelector("#exam").style.display = 'block';
+                                    document.querySelector("#exit").style.display = 'block';
+                                    //显示当前登录用户对应的登录信息组件
+                                    document.querySelector("#nickname").style.display = 'block';
+                                }
+                            }).catch(function (err) {
+                                console.log(err)
+                            });
+                        }
+                    }
+                },
+                logout(){
+                    //1.获取localStorage
+                    let storage = window.localStorage;
+                    //2.发送请求，清除登录状态
+                    axios.post('/member/logout', '{"id":"'+storage.id+'"}').then(function (response) {
+                        //1.获取响应数据
+                        let data = response.data;
+                        //2.提示
+                        //alert(data.flag);
+                    }).catch(function (err) {
+                        console.log(err)
+                    });
+                    //3.清理localStorage
+                    window.localStorage.clear();
+                    //4.通过调用checkLogin方法重置主页面的右上角显示区域
+                    this.checkLogin();
+                }
+            },
+            created(){
+                this.checkLogin();
+            },
+
+        }
+    );
+</script>
+
+</body>
+</html>
