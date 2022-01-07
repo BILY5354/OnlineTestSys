@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mm_exam:war">
+    <output-path>$PROJECT_DIR$/mm_exam/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mm_exam</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="mm_exam-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="mm_exam:war exploded" />
+    </root>
+  </artifact>
+</component>

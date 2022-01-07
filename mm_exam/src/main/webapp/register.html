@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="./img/asset-favicon.ico"/>
+    <title>注册页面</title>
+    <!-- 页面 css js -->
+    <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js" charset="UTF-8"></script> -->
+    <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css"/>
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/widget-base.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/page-sj-person-loginsign.css"/>
+    <link rel="stylesheet" href="./element-ui/lib/theme-chalk/index.css">
+
+    <script src="./js/vue.js" type="text/javascript"></script>
+    <script src="./js/axios-0.18.0.js" type="text/javascript"></script>
+    <script src="./element-ui/lib/index.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!--头部导航-->
+    <header class="head-login">
+        <div class="wrapper">
+            <div class="sui-navbar">
+                <div class="navbar-inner">
+                    <a href="./index.html" class="sui-brand"> <img src="./img/asset-logo-black.png" alt="刷题"/> </a>
+                    <span class="login-text">| 注册</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="item">
+    <div class="form">
+    <h3 class="loginsign-title">用户注册</h3>
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+
+            <el-form-item label="用户昵称" prop="nickname">
+                <el-input v-model="ruleForm.nickname"></el-input>
+            </el-form-item>
+
+            <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model="ruleForm.password"></el-input>
+            </el-form-item>
+
+            <el-form-item label="生日" required>
+                <el-col :span="11">
+                    <el-form-item prop="birthday">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.birthday" style="width: 100%;">
+                        </el-date-picker>
+                    </el-form-item>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="性别" prop="gender">
+                <el-radio-group v-model="ruleForm.gender">
+                    <el-radio label="男" v-model="male"></el-radio>
+                    <el-radio label="女" v-model="female"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+
+            <el-form-item label="邮箱" prop="email">
+                <el-input v-model="ruleForm.email" @blur="checkEmail"></el-input>
+            </el-form-item>
+
+            <el-form-item label="电话" prop="telephone">
+                <el-input v-model="ruleForm.telephone"></el-input>
+            </el-form-item>
+
+            <el-form-item label="地址" prop="address">
+                <el-input v-model="ruleForm.address"></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div></div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-bottom">
+                <div class="link">
+                    <dl>
+                        <dt>
+                            网站相关
+                        </dt>
+                        <dd>
+                            关于我们
+                        </dd>
+                        <dd>
+                            服务条款
+                        </dd>
+                        <dd>
+                            帮助中心
+                        </dd>
+                        <dd>
+                            编辑器语法
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            常用链接
+                        </dt>
+                        <dd>
+                            传智播客
+                        </dd>
+                        <dd>
+                            传智论坛
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            联系我们
+                        </dt>
+                        <dd>
+                            联系我们
+                        </dd>
+                        <dd>
+                            加入我们
+                        </dd>
+                        <dd>
+                            建议反馈
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            关注我们
+                        </dt>
+                        <dd>
+                            微博
+                        </dd>
+                        <dd>
+                            twitter
+                        </dd>
+                    </dl>
+                    <div class="xuke">
+                        <h3>内容许可</h3>
+                        <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p>
+                        <p>本站由 传智研究院 提供更新服务</p>
+                    </div>
+                </div>
+                <p class="Copyright">Copyright &copy; 2017 传智问答社区 当前版本 0.0.1</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="app">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="用户昵称" prop="nickname">
+            <el-input v-model="ruleForm.nickname"></el-input>
+        </el-form-item>
+
+<script>
+    /* 脚本中创建对象,处理业务 */
+    new Vue({
+        el: '#app',
+        data: {
+            ruleForm: {
+                nickname: '',
+                password: '',
+                birthday: '',
+                gender: '',
+                email: '',
+                telephone:'',
+                address:''
+            },
+            rules: {
+                nickname: [
+                    { required: true, message: '请输入用户名称', trigger: 'blur' },
+                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                ],
+                password: [
+                    { required: true, message: '请输入密码', trigger: 'blur' },
+                    { min: 3, max: 8, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                ],
+                birthday: [
+                    { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+                ],
+                gender: [
+                    { required: true, message: '请选择性别', trigger: 'change' }
+                ],
+                email: [
+                    { required: true, message: '请填写邮箱', trigger: 'blur' }
+                ],
+                telephone: [
+                    { required: true, message: '请填写联系电话', trigger: 'blur' }
+                ],
+                address: [
+                    { required: true, message: '请填写地址', trigger: 'blur' }
+                ]
+            }
+        },
+        methods: {
+            checkEmail: function() {
+                var regEmail = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                if (this.ruleForm.email != '' && !regEmail.test(this.ruleForm.email)) {
+                    this.$message({
+                        message: '邮箱格式不正确',
+                        type: 'error'
+                    })
+                    this.ruleForm.email = ''
+                }
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        // alert('submit!');
+                        axios.post('/member/register', this.ruleForm).then(function (response) {
+                            //得到响应数据
+                            var res = response.data;
+                            //判断成功与否
+                            if(res.flag){
+                                window.open('/index.html','_self');
+                            }else{
+                                alert("提示："+res.message)
+                            }
+                        }).catch(function (err) {
+                            console.log(err)
+                        });
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            }
+        }
+
+    });
+</script>
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
