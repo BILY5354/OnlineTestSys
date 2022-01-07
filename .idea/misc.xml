@@ -3,12 +3,17 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/mm" />
     <file type="web" url="file://$PROJECT_DIR$/mm_exam" />
+    <file type="web" url="file://$PROJECT_DIR$/test_mm_exam" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/mm/pom.xml" />
         <option value="$PROJECT_DIR$/mm_exam/pom.xml" />
+        <option value="$PROJECT_DIR$/test_mm_exam/pom.xml" />
       </list>
     </option>
   </component>
