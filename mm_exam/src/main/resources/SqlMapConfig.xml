@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis的主配置文件-->
+<configuration>
+    <!--定义property的配置-->
+    <properties resource="jdbc.properties"></properties>
+
+
+    <!--配置别名:别名配置是给实体类用的，不能用在dao上-->
+    <typeAliases>
+        <!--指定实体类所在的包，此时包下所有类都会注册别名，别名就是类名称-->
+        <package name="com.itheima.domain"></package>
+    </typeAliases>
+
+    <!--配置分页插件，plugins标签有出现顺序要求，必须在environments之前，同时要在properties和typeAliases之后 -->
+    <plugins>
+        <!-- com.github.pagehelper.PageInterceptor -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql" />
+            <property name="reasonable" value="true" />
+        </plugin>
+    </plugins>
+
+    <!--配置默认环境-->
+    <environments default="mysql">
+        <!--配置mysql的环境-->
+        <environment id="mysql">
+            <!--配置事务的类型-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据源信息-->
+            <dataSource type="POOLED" >
+                <!--配置连接数据库的四个基本信息-->
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置映射配置文件的位置-->
+    <mappers>
+        <!--指定实体映射配置文件所在的包，指定的是dao接口所在的包-->
+        <package name="com.itheima.dao"></package>
+    </mappers>
+
+</configuration>

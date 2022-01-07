@@ -54,6 +54,12 @@
       <version>2.3.3</version>
       <scope>provided</scope>
     </dependency>
+    <!--bean-utils-->
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.9.4</version>
+    </dependency>
     <!--apache工具包-->
     <dependency>
       <groupId>org.apache.commons</groupId>
